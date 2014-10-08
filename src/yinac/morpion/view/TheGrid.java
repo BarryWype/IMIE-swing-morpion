@@ -19,7 +19,12 @@ public class TheGrid extends JComponent{
     
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawRect(0, 0, 50, 50);
+        
+        for(int cpt=0;cpt<3;cpt++){
+            for(int cpt2=0;cpt2<3;cpt++){
+                g.drawRect(cpt*50, cpt*50, cpt2*50, cpt2*50);
+            }
+        }
         
         
     }
