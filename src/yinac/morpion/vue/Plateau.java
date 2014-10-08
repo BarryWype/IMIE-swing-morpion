@@ -4,19 +4,12 @@
  * and open the template in the editor.
  */
 
-package yinac.morpion;
+package yinac.morpion.vue;
 
 /**
  *
  * @author imie
  */
-public class launcher {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Plateau {
     
 }
