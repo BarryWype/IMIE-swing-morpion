@@ -6,27 +6,29 @@
 package yinac.morpion.view;
 
 import java.awt.BorderLayout;
-import java.awt.Graphics;
+import java.util.Observable;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.text.View;
-import sun.tools.jar.Main;
+import yinac.morpion.model.IMorpionModel;
+import yinac.morpion.view.events.CellClickedEvent;
 
 /**
  *
  * @author imie
  */
-public class Plateau extends JFrame {
+public class Plateau extends Observable {
 
-    public void init() {
+    private JFrame frame;
+    private IMorpionModel model;
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new BorderLayout());
+    public Plateau(IMorpionModel model) {
+        this.model = model;
+        this.frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(new BorderLayout());
 
         JPanel panelPseudoTop = new JPanel();
         JLabel labelPseudoPlayer1 = new JLabel("Joueur 1 :");
@@ -39,7 +41,6 @@ public class Plateau extends JFrame {
         panelPseudoTop.add(tfPseudoPlayer1);
         panelPseudoTop.add(labelPseudoPlayer2);
         panelPseudoTop.add(tfPseudoPlayer2);
-        
 
         JPanel panelCentral = new JPanel();
         panelCentral.setSize(500, 500);
@@ -47,14 +48,17 @@ public class Plateau extends JFrame {
         TheGrid grid = new TheGrid();
         grid.setSize(400, 400);
         panelCentral.add(grid, BorderLayout.CENTER);
-        setSize(500, 500);
 
-        add(panelPseudoTop, BorderLayout.NORTH);
-        add(panelCentral, BorderLayout.CENTER);
-        
+        frame.add(panelPseudoTop, BorderLayout.NORTH);
+        frame.add(panelCentral, BorderLayout.CENTER);
+
         //pack();
-        setVisible(true);
-
+        frame.setVisible(true);
     }
-   // }
+
+    public void cellClicked(int row, int column) {
+        setChanged();
+        notifyObservers(new CellClickedEvent(row, column));
+    }
+
 }

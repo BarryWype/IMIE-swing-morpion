@@ -6,7 +6,9 @@
 
 package yinac.morpion;
 
-import javax.swing.SwingUtilities;
+import yinac.morpion.controller.MorpionController;
+import yinac.morpion.model.MorpionModel;
+import yinac.morpion.model.Player;
 import yinac.morpion.view.Plateau;
 
 /**
@@ -20,14 +22,9 @@ public class launcher {
      */
     public static void main(String[] args) {
         
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                Plateau plateau = new Plateau();
-                plateau.init();
-            }
-        });
+        MorpionModel model = new MorpionModel(new Player("Pierre-Yves"), new Player("Clovis"));
+        Plateau plateau = new Plateau(model);
+        MorpionController controller = new MorpionController(model, plateau);
     }
     
 }

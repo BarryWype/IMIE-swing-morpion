@@ -26,7 +26,7 @@ public class MorpionModel extends Observable implements IMorpionModel {
     private GameState state;
     private List<Cell> cells;
 
-    MorpionModel(Player player1, Player player2) {
+    public MorpionModel(Player player1, Player player2) {
         if (new Random().nextBoolean()) {
             crossPlayer = player1;
             circlePlayer = player2;
