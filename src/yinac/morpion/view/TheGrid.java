@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package yinac.morpion.vue;
+package yinac.morpion.view;
 
 import java.awt.Component;
 import java.awt.Graphics;
@@ -20,6 +20,7 @@ public class TheGrid extends JComponent{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawRect(0, 0, 50, 50);
+        
         
     }
     
