@@ -6,49 +6,82 @@
 
 package yinac.morpion.model;
 
+import java.util.List;
+import java.util.Random;
+
+
 /**
  *
  * @author imie
  */
 public class MorpionModel implements IMorpionModel {
+    private Player crossPlayer;
+    private Player circlePlayer;
+    private Player winningPlayer;
+    private Cell nextCellType;
+    private GameState state;
+    private List<Cell> cells;
     
-    MorpionModel() {
-        
+    MorpionModel(Player player1, Player player2) {
+        if (new Random().nextBoolean()) {
+            crossPlayer = player1;
+            circlePlayer = player2;
+        } else {
+            crossPlayer = player2;
+            circlePlayer = player1;
+        }
+        nextCellType = Cell.circle;
+        winningPlayer = null;
+        state = GameState.running;
+        while (cells.size() < getRowCount() * getColumnCount())
+            cells.add(Cell.empty);
     }
 
     @Override
     public Cell getCellAt(int row, int column) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cells.get(row + column*getRowCount());
     }
 
     @Override
     public GameState getGameState() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return state;
     }
 
     @Override
     public Player getWinner() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return winningPlayer;
     }
 
     @Override
     public Player getCirclePlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return circlePlayer;
     }
 
     @Override
     public Player getCrossPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return crossPlayer;
     }
 
     @Override
     public Cell getCellTypeFromPlayer(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (player == crossPlayer) return Cell.cross;
+        if (player == circlePlayer) return Cell.circle;
+        return Cell.empty;
     }
 
     @Override
     public Player getNextPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return nextCellType == Cell.cross ? crossPlayer : circlePlayer;
+    }
+
+    @Override
+    public int getRowCount() {
+        return 3;
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 3;
     }
     
 }
