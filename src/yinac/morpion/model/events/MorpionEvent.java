@@ -13,7 +13,9 @@ package yinac.morpion.model.events;
 public class MorpionEvent {
     public enum Type {
         CellChange,
+        NextPlayerChange,
         StateChange
+        
     };
     private Type type;
 

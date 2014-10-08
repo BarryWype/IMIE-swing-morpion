@@ -6,6 +6,8 @@
 
 package yinac.morpion.model;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author imie
@@ -24,7 +26,10 @@ public interface IMorpionModel {
     }
     
     public Cell getCellAt(int row, int column);
+    public int getRowCount();
+    public int getColumnCount();
     public GameState getGameState();
+    public Player getNextPlayer();
     public Player getWinner();
     public Player getCirclePlayer();
     public Player getCrossPlayer();
