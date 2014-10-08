@@ -10,7 +10,7 @@ package yinac.morpion.model;
  *
  * @author imie
  */
-class Player {
+public class Player {
     private final String name;
 
     public String getName() {

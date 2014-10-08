@@ -25,6 +25,7 @@ public interface IMorpionModel {
     
     public Cell getCellAt(int row, int column);
     public GameState getGameState();
+    public Player getNextPlayer();
     public Player getWinner();
     public Player getCirclePlayer();
     public Player getCrossPlayer();
