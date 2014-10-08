@@ -6,7 +6,9 @@
 package yinac.morpion.view;
 
 import java.awt.BorderLayout;
+import java.nio.charset.CodingErrorAction;
 import java.util.Observable;
+import java.util.Observer;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +21,7 @@ import yinac.morpion.view.events.CellClickedEvent;
  *
  * @author imie
  */
-public class Plateau extends Observable {
+public class Plateau extends Observable implements Observer{
 
     private JFrame frame;
     private IMorpionModel model;
@@ -59,6 +61,11 @@ public class Plateau extends Observable {
     public void cellClicked(int row, int column) {
         setChanged();
         notifyObservers(new CellClickedEvent(row, column));
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        frame.repaint();
     }
 
 }

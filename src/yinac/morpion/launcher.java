@@ -24,7 +24,9 @@ public class launcher {
         
         MorpionModel model = new MorpionModel(new Player("Pierre-Yves"), new Player("Clovis"));
         Plateau plateau = new Plateau(model);
+        model.addObserver(plateau);
         MorpionController controller = new MorpionController(model, plateau);
+        plateau.addObserver(controller);
     }
     
 }
