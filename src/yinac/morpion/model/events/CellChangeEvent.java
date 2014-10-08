@@ -12,11 +12,11 @@ package yinac.morpion.model.events;
  */
 public class CellChangeEvent extends MorpionEvent {
 
-    public final int col, row;
-    public CellChangeEvent(int col, int row) {
+    public final int row, column;
+    public CellChangeEvent(int row, int column) {
         super(Type.CellChange);
-        this.col = col;
         this.row = row;
+        this.column = column;
     }
     
 }
