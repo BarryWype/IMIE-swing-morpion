@@ -13,11 +13,9 @@ import yinac.morpion.model.Player;
  * @author imie
  */
 public class NextPlayerChangeEvent extends MorpionEvent{
-    final public Player player;
 
-    public NextPlayerChangeEvent(Player player) {
+    public NextPlayerChangeEvent() {
         super(Type.NextPlayerChange);
-        this.player = player;
     }
     
 }
