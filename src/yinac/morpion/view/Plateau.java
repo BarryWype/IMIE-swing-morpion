@@ -45,7 +45,7 @@ public class Plateau extends Observable {
         JPanel panelCentral = new JPanel();
         panelCentral.setSize(500, 500);
         panelCentral.setLayout(new BorderLayout());
-        TheGrid grid = new TheGrid();
+        TheGrid grid = new TheGrid(this, model);
         grid.setSize(400, 400);
         panelCentral.add(grid, BorderLayout.CENTER);
 
